@@ -11,7 +11,7 @@ import matplotlib.animation as animation
 # animating the viscek model
 
 # reading the data from the file
-data = np.load('./V_a_.npy')
+data = np.load('./data/viscek_n=0.1N=300.npy')
 print(data.shape)
 X = data[0]
 Y = data[1]
@@ -50,3 +50,16 @@ def animate(i):
 
 anim = animation.FuncAnimation(fig, animate, frames=int(t_max/dt), interval=1)
 anim.save('viscek.mp4', writer='ffmpeg', fps=10)
+
+fig = plt.figure()
+ax = plt.axes(xlim=(0, L), ylim=(0, L))
+ax.set_title('Viscek Model')
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_aspect('equal')
+
+for i in range(data.shape[2]):
+    ax.plot(X[-20:, i], Y[-20:, i], '.', markersize=1, color='black')
+ax.quiver(X[-1], Y[-1], np.cos(Theta[-1]), np.sin(Theta[-1]))
+
+plt.savefig('viscek.png')
