@@ -11,7 +11,7 @@ import matplotlib.animation as animation
 # animating the viscek model
 
 # reading the data from the file
-data = np.load('./data/viscek_n=0.1.npy')
+data = np.load('./V_a_.npy')
 print(data.shape)
 X = data[0]
 Y = data[1]
