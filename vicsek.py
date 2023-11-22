@@ -45,8 +45,6 @@ def update(x, y, theta, *params):
     L = params[2]
     dt = params[3]
     eta = params[6]
-    seed = int(params[7])
-    np.random.seed(seed)
     vx = v*np.cos(theta)
     vy = v*np.sin(theta)
     theta = (mean_theta(x, y, theta, *params) + np.random.uniform(-eta/2, eta/2, (N, 1)))
