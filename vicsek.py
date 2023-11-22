@@ -62,7 +62,7 @@ def compute(*params):
     t_max = params[4]
     R = params[5]
     eta = params[6]
-
+    np.random.seed(80085)
     # Defining the initial positions and velocities
     x = np.random.uniform(0, L, (N, 1))
     y = np.random.uniform(0, L, (N, 1))
