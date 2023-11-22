@@ -13,9 +13,9 @@ seed = 0
 n = 155
 params = np.zeros((n, 8))
 for i in range(n):
-    params[i, 0] = N[3]
+    params[i, 0] = N[0]
     params[i, 1] = v
-    params[i, 2] = L[3]
+    params[i, 2] = L[0]
     params[i, 3] = dt
     params[i, 4] = t_max
     params[i, 5] = R
