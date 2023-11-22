@@ -13,9 +13,9 @@ seed = 0
 n = 50
 params = np.zeros((n, 8))
 for i in range(n):
-    params[i, 0] = N[i%5]
+    params[i, 0] = N[i//10]
     params[i, 1] = v
-    params[i, 2] = L[i%5]
+    params[i, 2] = L[i//10]
     params[i, 3] = dt
     params[i, 4] = t_max
     params[i, 5] = R
