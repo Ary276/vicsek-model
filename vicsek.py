@@ -64,7 +64,7 @@ def compute(*params):
     t_max = params[4]
     R = params[5]
     eta = params[6]
-    seed = params[7]
+    seed = int(params[7])
     np.random.seed(seed)
 
     # Defining the initial positions and velocities
@@ -114,7 +114,7 @@ if __name__ == '__main__':
     with multiprocessing.Pool(processes=n_proc) as pool:
         V_a = pool.map(vel, list(range(iters)))
 end = time.time()
-np.save(f'V_a_3_5.npy', V_a)
+np.save(f'V_a_3.npy', V_a)
 print('Time taken = ', end-start, 's')
 
 
