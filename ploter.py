@@ -8,8 +8,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 N = 300
-n = 2.0
-L = 7
+n = 0.1
+L = 25
 data = np.load(f'./data/viscek_n={n}N={N}L={L}.npy')
 print(data.shape)
 X = data[0]
