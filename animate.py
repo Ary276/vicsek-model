@@ -11,10 +11,10 @@ import matplotlib.animation as animation
 # animating the viscek model
 
 # reading the data from the file
-N = 300
+N = 4000
 L = 5
-n = 0.1
-data = np.load('./data/viscek_n=0.1N=300L=5.npy')
+n = 0.0
+data = np.load('./data/viscek_n=0.0N=4000L=31.npy')
 print(data.shape)
 X = data[0]
 Y = data[1]
@@ -30,7 +30,6 @@ dt = params[3]
 t_max = params[4]
 R = params[5]
 eta = params[6]
-seed = params[7]
 
 # animating the viscek model using matplotlib.animation quiver plot
 fig = plt.figure()

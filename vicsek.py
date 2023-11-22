@@ -34,7 +34,7 @@ def mean_theta(x_in, y_in, theta_in, *params):
     tree = scipy.spatial.cKDTree(coord, boxsize=(params[2], params[2]))
     for i in range(N):
         nearest_neighbour = tree.query_ball_point(coord[i], R)
-        mean_theta[i] = np.arctan(np.mean(np.cos(theta_in[nearest_neighbour]))/np.mean(np.sin(theta_in[nearest_neighbour])))
+        mean_theta[i] = np.arctan(np.mean(np.sin(theta_in[nearest_neighbour]))/np.mean(np.cos(theta_in[nearest_neighbour])))
     return mean_theta
 
 # Updating the positions and velocities of the particles
@@ -62,8 +62,6 @@ def compute(*params):
     t_max = params[4]
     R = params[5]
     eta = params[6]
-    #seed = int(params[7])
-    #np.random.seed(seed)
 
     # Defining the initial positions and velocities
     x = np.random.uniform(0, L, (N, 1))
