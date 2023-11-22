@@ -1,25 +1,25 @@
 import numpy as np
 
 # initial values of the parameters
-N = 1
+N = [40, 100, 400, 4000, 10000]
 v = 0.03
-L = 1
+L = [3.1, 5, 10, 31.6, 50]
 dt = 1
 t_max = 200
 R = 1
 eta = 3
 seed = 0
 
-n = 200
+n = 50
 params = np.zeros((n, 8))
 for i in range(n):
-    params[i, 0] = 10**(i//50 + 2)
+    params[i, 0] = N[i%5]
     params[i, 1] = v
-    params[i, 2] = L
+    params[i, 2] = L[i%5]
     params[i, 3] = dt
     params[i, 4] = t_max
     params[i, 5] = R
-    params[i, 6] = (0.1*i)%5
+    params[i, 6] = (0.5*i)%5
     params[i, 7] = seed
     
 np.savetxt('params.txt', params, delimiter=',')
