@@ -11,10 +11,10 @@ import matplotlib.animation as animation
 # animating the viscek model
 
 # reading the data from the file
-N = 4000
-L = 5
-n = 0.0
-data = np.load('./data/viscek_n=0.0N=4000L=31.npy')
+N = 300
+L = 25
+n = 0.1
+data = np.load('./data/viscek_n=0.1N=300L=25.npy')
 print(data.shape)
 X = data[0]
 Y = data[1]

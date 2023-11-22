@@ -94,19 +94,19 @@ plt.figure(figsize=(10, 10))
 eta = np.linspace(0, 4.9, 50)
 
 data = np.load('V_a_0.npy')
-data = np.mean(data[:, -400:], axis=1)
+data = np.mean(data[:, -100:], axis=1)
 plt.scatter(eta, data, label='N = 40, L = 3.1')
 
 data = np.load('V_a_1.npy')
-data = np.mean(data[:, -400:], axis=1)
+data = np.mean(data[:, -100:], axis=1)
 plt.scatter(eta, data, label='N = 100, L = 3.1')
 
 data = np.load('V_a_2.npy')
-data = np.mean(data[:, -400:], axis=1)
+data = np.mean(data[:, -100:], axis=1)
 plt.scatter(eta, data, label='N = 400, L = 3.1')
 
 #data = np.load('V_a_3.npy')
-#data = np.mean(data[:, -400:], axis=1)
+#data = np.mean(data[:, -100:], axis=1)
 #plt.scatter(eta, data, label='N = 4000, L = 3.1')
 
 #plt.scatter(eta, data[40:50], label='N = 1000, L = 3.1')
