@@ -112,7 +112,7 @@ if __name__ == '__main__':
     with multiprocessing.Pool(processes=n_proc) as pool:
         V_a = pool.map(vel, list(range(iters)))
 end = time.time()
-np.save(f'V_a_.npy', V_a)
+np.save(f'V_a_3.npy', V_a)
 print('Time taken = ', end-start, 's')
 
 
