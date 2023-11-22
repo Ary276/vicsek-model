@@ -2,7 +2,7 @@ import numpy as np
 
 # initial values of the parameters
 N = [40, 100, 400, 4000, 10000]
-v = 0.03
+v = 0.3
 L = [3.1, 5, 10, 31.6, 50]
 dt = 1
 t_max = 200
