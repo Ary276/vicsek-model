@@ -91,21 +91,26 @@ ax4.quiver(X[-1], Y[-1], np.cos(Theta[-1]), np.sin(Theta[-1]))
 plt.savefig('viscek.png')
 
 plt.figure(figsize=(10, 10))
-eta = np.linspace(0, 4.9, 50)
+eta = np.linspace(0, 4.8, 25)
 
 data = np.load('V_a_0.npy')
+data = (data[0:25, :] + data[25:50, :] + data[50:75,:] + data[75:100,:])/4
+print(data.shape)
 data = np.mean(data[:, -100:], axis=1)
 plt.scatter(eta, data, label='N = 40, L = 3.1')
 
 data = np.load('V_a_1.npy')
+data = (data[0:25, :] + data[25:50, :] + data[50:75,:] + data[75:100,:])/4
 data = np.mean(data[:, -100:], axis=1)
 plt.scatter(eta, data, label='N = 100, L = 3.1')
 
 data = np.load('V_a_2.npy')
+data = (data[0:25, :] + data[25:50, :] + data[50:75,:] + data[75:100,:])/4
 data = np.mean(data[:, -100:], axis=1)
 plt.scatter(eta, data, label='N = 400, L = 3.1')
 
-data = np.load('V_a_3_4.npy')
+data = np.load('V_a_3.npy')
+data = (data[0:25, :] + data[25:50, :] + data[50:75,:] + data[75:100,:])/4
 data = np.mean(data[:, -100:], axis=1)
 plt.scatter(eta, data, label='N = 4000, L = 3.1')
 
@@ -114,10 +119,6 @@ plt.legend()
 plt.xlabel('$\eta$')
 plt.ylabel('$v_a$')
 plt.savefig('V_a.png')
-
-plt.figure(figsize=(10, 10))
-data = np.load('V_a_3_2.npy')
-plt.plot(data[10, :])
 
 
 #fig = plt.figure(figsize=(10, 10))
