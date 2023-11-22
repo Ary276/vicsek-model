@@ -70,7 +70,7 @@ def compute(*params):
     # Defining the initial positions and velocities
     x = np.random.uniform(0, L, (N, 1))
     y = np.random.uniform(0, L, (N, 1))
-    theta = np.random.uniform(np.pi, np.pi, (N, 1))
+    theta = np.random.uniform(-np.pi, np.pi, (N, 1))
     X = np.zeros((int(t_max/dt), N))
     Y = np.zeros((int(t_max/dt), N))
     Theta = np.zeros((int(t_max/dt), N))
