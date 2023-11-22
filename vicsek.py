@@ -106,10 +106,11 @@ def vel(i):
 if __name__ == '__main__':
     start = time.time()
     print(param_list.shape)
+    iters = int(param_list.shape[0])
     n_proc = multiprocessing.cpu_count()
     print('Number of processors = ', n_proc)
     with multiprocessing.Pool(processes=n_proc) as pool:
-        V_a = pool.map(vel, range(2))
+        V_a = pool.map(vel, list(range(iters)))
 end = time.time()
 np.save(f'V_a_.npy', V_a)
 print('Time taken = ', end-start, 's')
