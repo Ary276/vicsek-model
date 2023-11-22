@@ -8,10 +8,9 @@ dt = 1
 t_max = 500
 R = 1
 eta = 3
-seed = 80085
 
 n = 50
-params = np.zeros((n, 8))
+params = np.zeros((n, 7))
 for i in range(n):
     params[i, 0] = N[3]
     params[i, 1] = v
@@ -20,7 +19,6 @@ for i in range(n):
     params[i, 4] = t_max
     params[i, 5] = R
     params[i, 6] = (0.1*i)%5
-    params[i, 7] = seed
     
 np.savetxt('params.txt', params, delimiter=',')
 
