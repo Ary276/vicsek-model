@@ -49,7 +49,7 @@ def update(x, y, theta, *params):
     np.random.seed(seed)
     vx = v*np.cos(theta)
     vy = v*np.sin(theta)
-    theta = (mean_theta(x, y, theta, *params) + np.random.uniform(-eta/2, eta/2, (N, 1)))%(2*np.pi)
+    theta = (mean_theta(x, y, theta, *params) + np.random.uniform(-eta/2, eta/2, (N, 1)))
     x = (x + vx*dt)%L
     y = (y + vy*dt)%L
     return x, y, theta
@@ -70,7 +70,7 @@ def compute(*params):
     # Defining the initial positions and velocities
     x = np.random.uniform(0, L, (N, 1))
     y = np.random.uniform(0, L, (N, 1))
-    theta = np.random.uniform(0, 2*np.pi, (N, 1))
+    theta = np.random.uniform(np.pi, np.pi, (N, 1))
     X = np.zeros((int(t_max/dt), N))
     Y = np.zeros((int(t_max/dt), N))
     Theta = np.zeros((int(t_max/dt), N))
