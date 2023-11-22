@@ -117,7 +117,7 @@ plt.savefig('V_a.png')
 
 plt.figure(figsize=(10, 10))
 data = np.load('V_a_3.npy')
-plt.plot(data[0, :])
+plt.plot(data[1, :])
 
 
 fig = plt.figure(figsize=(10, 10))

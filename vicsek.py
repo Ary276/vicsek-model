@@ -36,24 +36,7 @@ def mean_theta(x_in, y_in, theta_in, *params):
         nearest_neighbour = tree.query_ball_point(coord[i], R)
         avg_sin = np.mean(np.sin(theta_in[nearest_neighbour]))
         avg_cos = np.mean(np.cos(theta_in[nearest_neighbour]))
-        if avg_cos > 0 and avg_sin > 0:
-            mean_theta[i] = np.arctan(np.abs(avg_sin/avg_cos))
-        elif avg_cos < 0 and avg_sin > 0:
-            mean_theta[i] = np.arctan(np.abs(avg_sin/avg_cos)) + np.pi/2
-        elif avg_cos < 0 and avg_sin < 0:
-            mean_theta[i] = np.arctan(np.abs(avg_sin/avg_cos)) + np.pi
-        elif avg_cos > 0 and avg_sin < 0:
-            mean_theta[i] = np.arctan(np.abs(avg_sin/avg_cos)) + 3*np.pi/2
-        elif avg_cos == 0 and avg_sin > 0:
-            mean_theta[i] = np.pi/2
-        elif avg_cos == 0 and avg_sin < 0:
-            mean_theta[i] = 3*np.pi/2
-        elif avg_cos > 0 and avg_sin == 0:
-            mean_theta[i] = 0
-        elif avg_cos < 0 and avg_sin == 0:
-            mean_theta[i] = np.pi
-        else:
-            mean_theta[i] = np.random.uniform(0, 2*np.pi)
+        mean_theta[i] = np.arctan2(avg_sin, avg_cos)
     return mean_theta
 
 # Updating the positions and velocities of the particles
@@ -66,7 +49,7 @@ def update(x, y, theta, *params):
     eta = params[6]
     vx = v*np.cos(theta)
     vy = v*np.sin(theta)
-    theta = (mean_theta(x, y, theta, *params) + np.random.uniform(-eta/2, eta/2, (N, 1)))%(2*np.pi)
+    theta = (mean_theta(x, y, theta, *params) + np.random.uniform(-eta/2, eta/2, (N, 1)))
     x = (x + vx*dt)%L
     y = (y + vy*dt)%L
     return x, y, theta
@@ -85,7 +68,7 @@ def compute(*params):
     # Defining the initial positions and velocities
     x = np.random.uniform(0, L, (N, 1))
     y = np.random.uniform(0, L, (N, 1))
-    theta = np.random.uniform(0, 2*np.pi, (N, 1))
+    theta = np.random.uniform(-np.pi, np.pi, (N, 1))
     X = np.zeros((int(t_max/dt), N))
     Y = np.zeros((int(t_max/dt), N))
     Theta = np.zeros((int(t_max/dt), N))
