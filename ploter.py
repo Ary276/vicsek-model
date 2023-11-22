@@ -28,8 +28,8 @@ ax1.set_xlim(0, L)
 ax1.set_ylim(0, L)
 ax1.set_title(f'(a) N = {N}, L = {L}, $\eta$ = {n}, t = 0')
 ax1.set_aspect('equal')
-ax1.quiver(X[:19], Y[:19], np.cos(Theta[:19]), np.sin(Theta[:19]), headwidth=0, headlength=0, headaxislength=0)
-ax1.quiver(X[20], Y[20], np.cos(Theta[20]), np.sin(Theta[20]))
+ax1.quiver(X[:4], Y[:4], np.cos(Theta[:4]), np.sin(Theta[:4]), headwidth=0, headlength=0, headaxislength=0)
+ax1.quiver(X[5], Y[5], np.cos(Theta[5]), np.sin(Theta[5]))
 
 
 ax2 = plt.subplot(2, 2, 2)
@@ -125,9 +125,9 @@ fig = plt.figure(figsize=(10, 10))
 
 ax1 = plt.subplot(1, 1, 1)
 
-N = 300
+N = 4000
 n = 0.0
-L = 7
+L = 31
 data = np.load(f'./data/viscek_n={n}N={N}L={L}.npy')
 print(data.shape)
 X = data[0]
