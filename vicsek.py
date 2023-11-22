@@ -93,7 +93,7 @@ param_list = np.loadtxt('params.txt', delimiter=',')
 def vel(i):
     param = param_list[i]
     data = compute(*param)
-    #np.save(f'./data/viscek_n={param[6]:0,.1f}N={int(param[0])}L={int(param[2])}.npy', data)
+    np.save(f'./data/viscek_n={param[6]:0,.1f}N={int(param[0])}L={int(param[2])}.npy', data)
     Vx = np.cos(data[2, :, :])
     Vy = np.sin(data[2, :, :])
     V = np.stack((Vx, Vy), axis=0)
