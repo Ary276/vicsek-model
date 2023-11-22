@@ -105,9 +105,9 @@ data = np.load('V_a_2.npy')
 data = np.mean(data[:, -100:], axis=1)
 plt.scatter(eta, data, label='N = 400, L = 3.1')
 
-#data = np.load('V_a_3.npy')
-#data = np.mean(data[:, -100:], axis=1)
-#plt.scatter(eta, data, label='N = 4000, L = 3.1')
+data = np.load('V_a_3_4.npy')
+data = np.mean(data[:, -100:], axis=1)
+plt.scatter(eta, data, label='N = 4000, L = 3.1')
 
 #plt.scatter(eta, data[40:50], label='N = 1000, L = 3.1')
 plt.legend()
@@ -116,29 +116,27 @@ plt.ylabel('$v_a$')
 plt.savefig('V_a.png')
 
 plt.figure(figsize=(10, 10))
-data = np.load('V_a_3.npy')
-plt.plot(data[1, :])
+data = np.load('V_a_3_2.npy')
+plt.plot(data[10, :])
 
 
-fig = plt.figure(figsize=(10, 10))
+#fig = plt.figure(figsize=(10, 10))
+#ax1 = plt.subplot(1, 1, 1)
 
+#N = 4000
+#n = 0.0
+#L = 31
+#data = np.load(f'./data/viscek_n={n}N={N}L={L}.npy')
+#print(data.shape)
+#X = data[0]
+#Y = data[1]
+#Theta = data[2]
 
-ax1 = plt.subplot(1, 1, 1)
-
-N = 4000
-n = 0.0
-L = 31
-data = np.load(f'./data/viscek_n={n}N={N}L={L}.npy')
-print(data.shape)
-X = data[0]
-Y = data[1]
-Theta = data[2]
-
-ax1.set_xlim(0, L)
-ax1.set_ylim(0, L)
-ax1.set_title(f'(a) N = {N}, L = {L}, $\eta$ = {n}, t = 0')
-ax1.set_aspect('equal')
-ax1.quiver(X[-20:-1], Y[-20:-1], np.cos(Theta[-20:-1]), np.sin(Theta[-20:-1]), headwidth=0, headlength=0, headaxislength=0)
-ax1.quiver(X[-1], Y[-1], np.cos(Theta[-1]), np.sin(Theta[-1]))
+#ax1.set_xlim(0, L)
+#ax1.set_ylim(0, L)
+#ax1.set_title(f'(a) N = {N}, L = {L}, $\eta$ = {n}, t = 0')
+#ax1.set_aspect('equal')
+#ax1.quiver(X[-20:-1], Y[-20:-1], np.cos(Theta[-20:-1]), np.sin(Theta[-20:-1]), headwidth=0, headlength=0, headaxislength=0)
+#ax1.quiver(X[-1], Y[-1], np.cos(Theta[-1]), np.sin(Theta[-1]))
 
 plt.show() 
