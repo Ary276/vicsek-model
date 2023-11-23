@@ -19,7 +19,7 @@ for i in range(n):
     params[i, 3] = dt
     params[i, 4] = t_max
     params[i, 5] = R
-    params[i, 6] = 1
+    params[i, 6] = 3
     params[i, 7] = 0
     
 np.savetxt('params.txt', params, delimiter=',')
