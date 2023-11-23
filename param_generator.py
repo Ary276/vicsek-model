@@ -1,9 +1,9 @@
 import numpy as np
 
 # initial values of the parameters
-N = 1000
+N = 500
 v = 0.03
-L = 50
+L = 35.36
 dt = 1
 t_max = 1000
 R = 1
