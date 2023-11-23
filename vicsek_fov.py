@@ -100,7 +100,7 @@ param_list = np.loadtxt('params.txt', delimiter=',')
 def vel(i):
     param = param_list[i]
     data = compute(*param)
-    np.save(f'./data/viscek_fov_n={param[6]:0,.1f}N={int(param[0])}L={int(param[2])}.npy', data)
+    #np.save(f'./data/viscek_fov_n={param[6]:0,.1f}N={int(param[0])}L={int(param[2])}.npy', data)
     Vx = np.cos(data[2, :, :])
     Vy = np.sin(data[2, :, :])
     V = np.stack((Vx, Vy), axis=0)
@@ -118,5 +118,5 @@ if __name__ == '__main__':
     with multiprocessing.Pool(processes=n_proc) as pool:
         V_a = pool.map(vel, list(range(iters)))
 end = time.time()
-#np.save(f'V_a_rho.npy', V_a)
+np.save(f'V_a_fov.npy', V_a)
 print('Time taken = ', end-start, 's')
