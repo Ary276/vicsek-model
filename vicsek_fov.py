@@ -26,13 +26,14 @@ def distance(x1, y1, x2, y2, *params):
 # Calculating mean theta value
 
 
-def mean_theta(ckdtree, theta_in, *params):
+def mean_theta(x_in, y_in, theta_in, *params):
     N = int(params[0])
     R = params[5]
     mean_theta = np.zeros((N, 1))
-  
+    coord = np.concatenate((x_in, y_in), axis=1)
+    tree = scipy.spatial.cKDTree(coord, boxsize=(params[2], params[2]))
     for i in range(N):
-        nearest_neighbour = ckdtree.query_ball_point(coord_in[i], R)
+        nearest_neighbour = tree.query_ball_point(coord[i], R)
         avg_sin = np.mean(np.sin(theta_in[nearest_neighbour]))
         avg_cos = np.mean(np.cos(theta_in[nearest_neighbour]))
         mean_theta[i] = np.arctan2(avg_sin, avg_cos)
@@ -48,7 +49,7 @@ def update(x, y, theta, *params):
     eta = params[6]
     vx = v*np.cos(theta)
     vy = v*np.sin(theta)
-    theta = (mean_theta(tree, theta, *params) + np.random.uniform(-eta/2, eta/2, (N, 1)))
+    theta = (mean_theta(x, y, theta, *params) + np.random.uniform(-eta/2, eta/2, (N, 1)))
     x = (x + vx*dt)%L
     y = (y + vy*dt)%L
     return x, y, theta
