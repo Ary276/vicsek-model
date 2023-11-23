@@ -10,7 +10,7 @@ R = 1
 eta = 2.4
 seed = 0
 
-n = 250
+n = 500
 params = np.zeros((n, 8))
 for i in range(n):
     params[i, 0] = int(N[i%50])
