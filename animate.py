@@ -14,7 +14,7 @@ import matplotlib.animation as animation
 N = 300
 L = 25
 n = 0.1
-data = np.load('./data/viscek_n=0.1N=300L=25.npy')
+data = np.load('./data/viscek_fov_n=0.1N=300L=25.npy')
 print(data.shape)
 X = data[0]
 Y = data[1]
@@ -51,4 +51,4 @@ def animate(i):
     return ax
 
 anim = animation.FuncAnimation(fig, animate, frames=int(t_max/dt), interval=1)
-anim.save('viscek.mp4', writer='ffmpeg', fps=10)
+anim.save('viscek_fov.mp4', writer='ffmpeg', fps=10)

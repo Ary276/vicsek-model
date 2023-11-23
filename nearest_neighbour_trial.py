@@ -6,12 +6,19 @@ start = time.time()
 N = 100
 x = np.random.uniform(0, 1, (N, 1))
 y = np.random.uniform(0, 1, (N, 1))
+fov = np.pi
+theta = np.random.uniform(-np.pi, np.pi, (N, 1))
 dat = np.concatenate((x, y), axis=1)
 print(dat.shape)
 tree = scipy.spatial.cKDTree(dat, boxsize=(1, 1))
 i = 15
-nearest_neighbour = tree.query_ball_point(dat[i], 0.1)
+nearest_neighbour = np.array(tree.query_ball_point(dat[i], 0.1))
 print(nearest_neighbour)
+angles = np.arctan2(x[nearest_neighbour] - x[i], y[nearest_neighbour] - y[i])
+del_theta = np.abs(theta[i] - angles)
+nearest_neighbour_ind = (del_theta <= fov).nonzero()[0]
+
+print(nearest_neighbour[nearest_neighbour_ind])
 end = time.time()
 print('Time taken = ', end-start)
 print('-----------------')
