@@ -6,7 +6,7 @@ start = time.time()
 N = 100
 x = np.random.uniform(0, 1, (N, 1))
 y = np.random.uniform(0, 1, (N, 1))
-fov = np.pi
+fov = 0.1
 theta = np.random.uniform(-np.pi, np.pi, (N, 1))
 dat = np.concatenate((x, y), axis=1)
 print(dat.shape)
@@ -15,8 +15,8 @@ i = 15
 nearest_neighbour = np.array(tree.query_ball_point(dat[i], 0.1))
 print(nearest_neighbour)
 angles = np.arctan2(x[nearest_neighbour] - x[i], y[nearest_neighbour] - y[i])
-del_theta = np.abs(theta[i] - angles)
-nearest_neighbour_ind = (del_theta <= fov).nonzero()[0]
+print(angles)
+nearest_neighbour_ind = (np.abs(angles) < fov/2).nonzero()[0]
 
 print(nearest_neighbour[nearest_neighbour_ind])
 end = time.time()

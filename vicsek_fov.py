@@ -36,8 +36,7 @@ def mean_theta(x_in, y_in, theta_in, *params):
     for i in range(N):
         nearest_neighbour = np.array(tree.query_ball_point(coord[i], R))
         angles = np.arctan2(x_in[nearest_neighbour] - x_in[i], y_in[nearest_neighbour] - y_in[i])
-        del_theta = np.abs(theta_in[i] - angles)
-        nearest_neighbour_ind = (del_theta <= fov).nonzero()[0]
+        nearest_neighbour_ind = (np.abs(angles) <= fov/2).nonzero()[0]
         nearest_neighbour = nearest_neighbour[nearest_neighbour_ind]
         avg_sin = np.mean(np.sin(theta_in[nearest_neighbour]))
         avg_cos = np.mean(np.cos(theta_in[nearest_neighbour]))
