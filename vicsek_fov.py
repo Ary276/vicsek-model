@@ -29,7 +29,7 @@ def distance(x1, y1, x2, y2, *params):
 def mean_theta(x_in, y_in, theta_in, *params):
     N = int(params[0])
     R = params[5]
-    fov = params[7]
+    fov = params[8]
     mean_theta = np.zeros((N, 1))
     coord = np.concatenate((x_in, y_in), axis=1)
     tree = scipy.spatial.cKDTree(coord, boxsize=(params[2], params[2]))
@@ -93,7 +93,7 @@ def compute(*params):
 
 
 # Reading the parameters from the file
-param_list = np.loadtxt('params_fov.txt', delimiter=',')
+param_list = np.loadtxt('params.txt', delimiter=',')
 
 
 def vel(i):
@@ -119,8 +119,3 @@ if __name__ == '__main__':
 end = time.time()
 #np.save(f'V_a_rho.npy', V_a)
 print('Time taken = ', end-start, 's')
-
-
-
-
-
