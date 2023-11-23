@@ -65,7 +65,7 @@ def compute(*params):
     R = params[5]
     eta = params[6]
     seed = int(params[7])
-    np.random.seed(seed)
+    #np.random.seed(seed)
 
     # Defining the initial positions and velocities
     x = np.random.uniform(0, L, (N, 1))

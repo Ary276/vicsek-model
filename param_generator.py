@@ -21,7 +21,7 @@ for i in range(n):
     params[i, 4] = t_max
     params[i, 5] = R
     params[i, 6] = 2
-    params[i, 7] = int(time.time())
+    params[i, 7] = 0
     
 np.savetxt('params.txt', params, delimiter=',')
 
