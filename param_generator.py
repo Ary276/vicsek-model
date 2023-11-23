@@ -1,7 +1,7 @@
 import numpy as np
 
 # initial values of the parameters
-N = 0
+N = np.linspace(10, 4000, 50)
 v = 0.3
 L = [3.1, 5, 10, 31.6, 50]
 dt = 1
@@ -10,10 +10,10 @@ R = 1
 eta = 3
 seed = 0
 
-n = 12
+n = 50
 params = np.zeros((n, 8))
 for i in range(n):
-    params[i, 0] = 2**i
+    params[i, 0] = int(N[i])
     params[i, 1] = v
     params[i, 2] = 20
     params[i, 3] = dt
