@@ -29,11 +29,15 @@ def distance(x1, y1, x2, y2, *params):
 def mean_theta(x_in, y_in, theta_in, *params):
     N = int(params[0])
     R = params[5]
+    fov = params[7]
     mean_theta = np.zeros((N, 1))
     coord = np.concatenate((x_in, y_in), axis=1)
     tree = scipy.spatial.cKDTree(coord, boxsize=(params[2], params[2]))
     for i in range(N):
         nearest_neighbour = tree.query_ball_point(coord[i], R)
+        for i in range(len(nearest_neighbour)):
+            if np.abs(theta_in[nearest_neighbour[i]] - theta_in[i]) > fov/2:
+                np.delete(nearest_neighbour, i)
         avg_sin = np.mean(np.sin(theta_in[nearest_neighbour]))
         avg_cos = np.mean(np.cos(theta_in[nearest_neighbour]))
         mean_theta[i] = np.arctan2(avg_sin, avg_cos)
@@ -90,7 +94,7 @@ def compute(*params):
 
 
 # Reading the parameters from the file
-param_list = np.loadtxt('params.txt', delimiter=',')
+param_list = np.loadtxt('params_fov.txt', delimiter=',')
 
 
 def vel(i):
