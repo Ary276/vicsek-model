@@ -35,8 +35,9 @@ def mean_theta(x_in, y_in, theta_in, *params):
     tree = scipy.spatial.cKDTree(coord, boxsize=(params[2], params[2]))
     for i in range(N):
         nearest_neighbour = tree.query_ball_point(coord[i], R)
-        del_theta = np.abs(theta_in[nearest_neighbour] - theta_in[i])
-        nearest_neighbour = (del_theta <= fov/2).nonzero()[0]
+        angles = np.arctan2(x_in[nearest_neighbour] - x_in[i], y_in[nearest_neighbour] - y_in[i])
+        del_theta = np.abs(theta_in[i] - angles)
+        nearest_neighbour = (del_theta <= fov).nonzero()[0]
         avg_sin = np.mean(np.sin(theta_in[nearest_neighbour]))
         avg_cos = np.mean(np.cos(theta_in[nearest_neighbour]))
         mean_theta[i] = np.arctan2(avg_sin, avg_cos)
