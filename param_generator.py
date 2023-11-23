@@ -7,7 +7,7 @@ L = 20
 dt = 1
 t_max = 500
 R = 1
-eta = 3
+eta = 2.4
 seed = 0
 
 n = 150
