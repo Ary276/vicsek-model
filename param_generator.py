@@ -10,17 +10,17 @@ R = 1
 eta = 3
 seed = 0
 
-n = 155
+n = 150
 params = np.zeros((n, 8))
 for i in range(n):
-    params[i, 0] = N[3]
+    params[i, 0] = N[0]
     params[i, 1] = v
-    params[i, 2] = L[3]
+    params[i, 2] = L[0]
     params[i, 3] = dt
     params[i, 4] = t_max
     params[i, 5] = R
-    params[i, 6] = (0.2*i)%6.28
-    params[i, 7] = i//31
+    params[i, 6] = (0.2*i)%6
+    params[i, 7] = i//30
     
 np.savetxt('params.txt', params, delimiter=',')
 
