@@ -119,7 +119,7 @@ data = np.mean(data[:, -100:], axis=1)
 plt.plot(eta, data, '-*', ms = 10, label='N = 4000, L = 3.1')
 
 #plt.scatter(eta, data[40:50], label='N = 1000, L = 3.1')
-plt.legend()
+plt.legend(fontsize = 15)
 plt.xlabel('$\eta$', fontsize = 20)
 plt.ylabel('$v_a$', fontsize = 20)
 plt.savefig('V_a.png')
@@ -187,7 +187,7 @@ ax.text(0.3, 0.7, 'slope = ' + str(round(a, 2)) + '$\pm$' + str(round(stderr, 3)
 ax.set_xlabel('$(\eta_c(L) - \eta)/\eta_c(L)$', fontsize = 20)
 ax.set_ylabel('$v_a$', fontsize = 20)
 
-ax.legend()
+ax.legend(fontsize = 15)
 
 plt.savefig('eta.png')
 
@@ -200,7 +200,7 @@ rho = np.logspace(1.6, 3.6, 50)/(20*20)
 plt.scatter(rho, data, s = 100 , marker = '+' , label = 'L = 20, $\eta$ = 2')
 plt.xlabel(r'$\rho$', fontsize = 20)
 plt.ylabel('$v_a$', fontsize = 20)
-plt.legend()
+plt.legend(fontsize = 15)
 plt.savefig('v_a_rho.png')
 
 plt.figure( figsize=(10, 10))
