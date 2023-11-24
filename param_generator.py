@@ -2,9 +2,9 @@ import numpy as np
 import time
 
 # initial values of the parameters
-N = 40
+N = 1000
 v = 0.03
-L = 3.1
+L = 15.8
 dt = 1
 t_max = 500
 R = 1
