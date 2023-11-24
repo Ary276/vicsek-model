@@ -2,7 +2,7 @@ import numpy as np
 import time
 
 # initial values of the parameters
-N = 400
+N = 40
 v = 0.03
 L = 10
 dt = 1
