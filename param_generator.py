@@ -4,7 +4,7 @@ import time
 # initial values of the parameters
 N = 40
 v = 0.03
-L = 10
+L = 3.1
 dt = 1
 t_max = 500
 R = 1
