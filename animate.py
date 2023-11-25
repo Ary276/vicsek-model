@@ -51,4 +51,4 @@ def animate(i):
     return ax
 
 anim = animation.FuncAnimation(fig, animate, frames=int(t_max/dt), interval=1)
-anim.save('viscek_fov.mp4', writer='ffmpeg', fps=10)
+anim.save('.animations/viscek_fov.mp4', writer='ffmpeg', fps=10)

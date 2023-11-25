@@ -97,6 +97,7 @@ def vel(i):
     param = param_list[i]
     data = compute(*param)
     #np.save(f'./data/viscek_n={param[6]:0,.1f}N={int(param[0])}L={int(param[2])}.npy', data)
+    #uncomment the above line to save data for animation plots or simulation plots
     Vx = np.cos(data[2, :, :])
     Vy = np.sin(data[2, :, :])
     V = np.stack((Vx, Vy), axis=0)
@@ -114,7 +115,8 @@ if __name__ == '__main__':
     with multiprocessing.Pool(processes=n_proc) as pool:
         V_a = pool.map(vel, list(range(iters)))
 end = time.time()
-#np.save(f'V_a_rho.npy', V_a)
+#np.save(f'./data/V_a_rho.npy', V_a)
+#uncomment the above line to save data for plotting the order parameter plots
 print('Time taken = ', end-start, 's')
 
 

@@ -31,7 +31,7 @@ plt.xlabel('Field of View' , fontsize = 20)
 plt.ylabel('Average Velocity', fontsize = 20)
 plt.title('Average Velocity vs Field of View', fontsize = 20)
 plt.legend()
-plt.savefig('V_a_fov.png')
+plt.savefig('./images/V_a_fov.png')
 
 
 plt.figure(figsize=(10, 10))
@@ -119,7 +119,7 @@ ax4.set_aspect('equal')
 ax4.quiver(X[-20:-1], Y[-20:-1], np.cos(Theta[-20:-1]), np.sin(Theta[-20:-1]), headwidth=0, headlength=0, headaxislength=0)
 ax4.quiver(X[-1], Y[-1], np.cos(Theta[-1]), np.sin(Theta[-1]))
 
-plt.savefig('viscek_fov.png')
+plt.savefig('./images/viscek_fov.png')
 
 
 plt.figure(figsize=(10, 10))
@@ -176,5 +176,5 @@ ax.set_xlabel('$(FOV - FOV_c)/FOV_c$', fontsize = 20)
 ax.set_ylabel('$v_a$', fontsize = 20)
 ax.set_title('Scaling With FOV', fontsize = 20)
 ax.legend(fontsize = 15)
-plt.savefig('fov_scaling.png')
+plt.savefig('./images/fov_scaling.png')
 plt.show()

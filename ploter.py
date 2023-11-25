@@ -88,7 +88,7 @@ ax4.set_aspect('equal')
 ax4.quiver(X[-20:-1], Y[-20:-1], np.cos(Theta[-20:-1]), np.sin(Theta[-20:-1]), headwidth=0, headlength=0, headaxislength=0)
 ax4.quiver(X[-1], Y[-1], np.cos(Theta[-1]), np.sin(Theta[-1]))
 
-plt.savefig('viscek.png')
+plt.savefig('./images/viscek.png')
 
 plt.figure(figsize=(10, 10))
 eta = np.linspace(0, 6, 30)
@@ -122,7 +122,7 @@ plt.plot(eta, data, '-*', ms = 10, label='N = 4000, L = 10')
 plt.legend(fontsize = 15)
 plt.xlabel('$\eta$', fontsize = 20)
 plt.ylabel('$v_a$', fontsize = 20)
-plt.savefig('V_a.png')
+plt.savefig('./images/V_a.png')
 
 #fig = plt.figure(figsize=(10, 10))
 
@@ -189,7 +189,7 @@ ax.set_ylabel('$v_a$', fontsize = 20)
 
 ax.legend(fontsize = 15)
 
-plt.savefig('eta.png')
+plt.savefig('./images/eta.png')
 
 plt.figure(figsize=(10, 10))
 
@@ -205,7 +205,7 @@ plt.plot(rho, smooth_data, '-', label = 'Smoothed Data', color = 'black')
 plt.xlabel(r'$\rho$', fontsize = 20)
 plt.ylabel('$v_a$', fontsize = 20)
 plt.legend(fontsize = 15)
-plt.savefig('v_a_rho.png')
+plt.savefig('./images/v_a_rho.png')
 
 plt.figure( figsize=(10, 10))
 ax = plt.gca()
@@ -224,4 +224,4 @@ ax.set_xlabel(r'$(\rho - \rho_c)/\rho_c$', fontsize = 20)
 ax.set_ylabel('$v_a$', fontsize = 20)
 ax.text(0.3, 0.8, 'slope = ' + str(round(a, 2)) + '$\pm$' + str(round(s, 3)) + r' for $\eta$ = 2, L = 20', horizontalalignment='center', verticalalignment='center', transform=ax.transAxes, fontsize = 15)
 
-plt.savefig('rho.png')
+plt.savefig('./images/rho.png')
