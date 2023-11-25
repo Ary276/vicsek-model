@@ -7,7 +7,7 @@ PH 325 Advanced Statistical Physics
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import linregress
-
+from scipy.signal import savgol_filter
 
 
 fig = plt.figure(figsize=(10, 10))
@@ -93,30 +93,30 @@ plt.savefig('viscek.png')
 plt.figure(figsize=(10, 10))
 eta = np.linspace(0, 6, 30)
 
-data = np.load('V_a_0.npy')
+data = np.load('./data/V_a_0.npy')
 print(data.shape)
 data = (data[0:30, :] + data[30:60, :] + data[60:90,:] + data[90:120,:] + data[120:150,:])/5
 print(data.shape)
 data = np.mean(data[:, -100:], axis=1)
 plt.plot(eta, data, '-+', ms = 10, label='N = 40, L = 3.1')
 
-data = np.load('V_a_1.npy')
+data = np.load('./data/V_a_1.npy')
 print(data.shape)
 data = (data[0:30, :] + data[30:60, :] + data[60:90,:] + data[90:120,:] + data[120:150,:])/5
 data = np.mean(data[:, -100:], axis=1)
-plt.plot(eta, data, '-v', ms = 10, label='N = 100, L = 3.1')
+plt.plot(eta, data, '-v', ms = 10, label='N = 100, L = 5')
 
-data = np.load('V_a_2.npy')
+data = np.load('./data/V_a_2.npy')
 print(data.shape)
 data = (data[0:30, :] + data[30:60, :] + data[60:90,:] + data[90:120,:] + data[120:150,:])/5
 data = np.mean(data[:, -100:], axis=1)
-plt.plot(eta, data, '-p', ms = 10, label='N = 400, L = 3.1')
+plt.plot(eta, data, '-p', ms = 10, label='N = 400, L = 31.6')
 
-data = np.load('V_a_3.npy')
+data = np.load('./data/V_a_3.npy')
 print(data.shape)
 data = (data[0:30, :] + data[30:60, :] + data[60:90,:] + data[90:120,:] + data[120:150,:])/5
 data = np.mean(data[:, -100:], axis=1)
-plt.plot(eta, data, '-*', ms = 10, label='N = 4000, L = 3.1')
+plt.plot(eta, data, '-*', ms = 10, label='N = 4000, L = 10')
 
 #plt.scatter(eta, data[40:50], label='N = 1000, L = 3.1')
 plt.legend(fontsize = 15)
@@ -137,38 +137,38 @@ ax = plt.gca()
 ax.set_xscale('log')
 ax.set_yscale('log')
 eta = np.linspace(0, 5.8, 30)
-data = np.load('V_a_0.npy')
+data = np.load('./data/V_a_0.npy')
 print(data.shape)
 data = (data[0:30, :] + data[30:60, :] + data[60:90,:] + data[90:120,:] + data[120:150,:])/5
 data = np.mean(data[:, -100:], axis=1)
-n_c = 3.6
+n_c = 3.3
 ind = np.where((n_c - eta)/n_c > 0.1)
 ax.scatter(np.abs((n_c - eta[ind])/n_c), data[ind], s = 50, marker = '+', label = 'N = 40')
 a1, b1, r1, p1, s1 = linregress(np.log(np.abs((n_c - eta[ind])/n_c)), np.log(data[ind]))
 print(a1, b1, r1, p1, s1)
 
-data = np.load('V_a_1.npy')
+data = np.load('./data/V_a_1.npy')
 data = (data[0:30, :] + data[30:60, :] + data[60:90,:] + data[90:120,:] + data[120:150,:])/5
 data = np.mean(data[:, -100:], axis=1)
-n_c = 3.4
+n_c = 3.1
 ind = np.where((n_c - eta)/n_c > 0.1)
 ax.scatter(np.abs((n_c - eta[ind])/n_c), data[ind], s = 50,  marker = 'v',  label = 'N = 100')
 a2, b2, r2, p2, s2 = linregress(np.log(np.abs((n_c - eta[ind])/n_c)), np.log(data[ind]))
 print(a2, b2, r2, p2, s2)
 
-data = np.load('V_a_2.npy')
+data = np.load('./data/V_a_2.npy')
 data = (data[0:30, :] + data[30:60, :] + data[60:90,:] + data[90:120,:] + data[120:150,:])/5
 data = np.mean(data[:, -100:], axis=1)
-n_c = 3.2
+n_c = 2.95
 ind = np.where((n_c - eta)/n_c > 0.1)
 ax.scatter(np.abs((n_c - eta[ind])/n_c), data[ind], s = 50, marker = 'p', label = 'N = 400')
 a3, b3, r3, p3, s3 = linregress(np.log(np.abs((n_c - eta[ind])/n_c)), np.log(data[ind]))
 print(a3, b3, r3, p3, s3)
 
-data = np.load('V_a_3.npy')
+data = np.load('./data/V_a_3.npy')
 data = (data[0:30, :] + data[30:60, :] + data[60:90,:] + data[90:120,:] + data[120:150,:])/5
 data = np.mean(data[:, -100:], axis=1)
-n_c = 3.0
+n_c = 2.9
 ind = np.where((n_c - eta)/n_c > 0.1)
 ax.scatter(np.abs((n_c - eta[ind])/n_c), data[ind], s = 50,  marker = '*', label = 'N = 4000')
 a4, b4, r4, p4, s4 = linregress(np.log(np.abs((n_c - eta[ind])/n_c)), np.log(data[ind]))
@@ -193,11 +193,15 @@ plt.savefig('eta.png')
 
 plt.figure(figsize=(10, 10))
 
-data = np.load('V_a_rho.npy')
+data = np.load('./data/V_a_rho.npy')
 data = (data[0:50, :] + data[50:100, :] + data[100:150,:] + data[150:200,:] + data[200:250,:] + data[250:300, :] + data[300:350, :] + data[350:400, :] + data[400:450,:] + data[450:500,:])/10
 data = np.mean(data[:, -100:], axis=1)
 rho = np.logspace(1.6, 3.6, 50)/(20*20)
 plt.scatter(rho, data, s = 100 , marker = '+' , label = 'L = 20, $\eta$ = 2')
+smooth_data = savgol_filter(data, 10, 3)
+print(smooth_data.shape)
+rho = np.logspace(1.6, 3.6, 50)/(20*20)
+plt.plot(rho, smooth_data, '-', label = 'Smoothed Data', color = 'black')
 plt.xlabel(r'$\rho$', fontsize = 20)
 plt.ylabel('$v_a$', fontsize = 20)
 plt.legend(fontsize = 15)
@@ -209,6 +213,7 @@ rho_c = 0.16
 ind = np.where((rho - rho_c)/rho_c > 0.4)
 ax.scatter(np.abs((rho[ind] - rho_c)/rho_c), data[ind], s = 100, marker = '+', label = 'L = 20, $\eta$ = 2')
 a, b, r, p, s = linregress(np.log(np.abs((rho[ind] - rho_c)/rho_c)), np.log(data[ind]))
+print('rho')
 print(a, b, r, p, s)
 x = np.linspace((rho[ind][0] - rho_c)/rho_c, (rho[ind][-1]-rho_c)/rho_c, 100)
 y = np.exp(b)*x**a
